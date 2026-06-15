@@ -203,3 +203,30 @@ FROM
 WHERE
   full_name ILIKE 'Tanvir%'
   OR full_name ILIKE '%Haque%';
+
+
+--Query 3: Retrieve all booking records where the payment status is missing (NULL), 
+--replacing the empty result with 'Action Required'.
+SELECT
+  booking_id,
+  user_id,
+  match_id,
+  coalesce(payment_status, 'Action Required') AS payment_status,
+  total_cost
+FROM
+  bookings
+WHERE
+  payment_status IS NULL;
+
+
+--Query 4: Retrieve match booking details along
+--with the User's full name and the scheduled Match fixture teams.
+SELECT
+  b.booking_id,
+  u.full_name,
+  m.fixture,
+  b.total_cost
+FROM
+  bookings AS b
+  JOIN users AS u ON b.user_id = u.user_id
+  JOIN matches AS m ON m.match_id = b.match_id;

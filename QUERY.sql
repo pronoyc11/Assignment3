@@ -186,7 +186,7 @@ VALUES
 --Query 1: Retrieve all upcoming football matches belonging to the
 --'Champions League' where the match status is 'Available'.
 SELECT
-  *
+  match_id,fixture,base_ticket_price
 FROM
   matches
 WHERE
@@ -197,7 +197,7 @@ WHERE
 --Query 2: Search for all users 
 --whose full names start with 'Tanvir' or contain the phrase 'Haque' (case-insensitive).
 SELECT
-  *
+  user_id, full_name, email
 FROM
   users
 WHERE
@@ -211,8 +211,7 @@ SELECT
   booking_id,
   user_id,
   match_id,
-  coalesce(payment_status, 'Action Required') AS payment_status,
-  total_cost
+  coalesce(payment_status, 'Action Required') AS systematic_status
 FROM
   bookings
 WHERE

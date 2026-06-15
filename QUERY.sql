@@ -232,7 +232,6 @@ FROM
   JOIN matches AS m ON m.match_id = b.match_id;
 
 
-
 --Query 5: Display a comprehensive list of all users and their booking IDs, 
 --ensuring that fans who have never bought a ticket are still listed.
 SELECT

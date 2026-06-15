@@ -227,8 +227,8 @@ SELECT
   b.total_cost
 FROM
   bookings AS b
-  JOIN users AS u ON b.user_id = u.user_id
-  JOIN matches AS m ON m.match_id = b.match_id;
+ INNER JOIN users AS u ON b.user_id = u.user_id
+  INNER JOIN matches AS m ON m.match_id = b.match_id;
 
 
 --Query 5: Display a comprehensive list of all users and their booking IDs, 
